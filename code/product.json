@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Enzo Knol",
+        "price": 9.99,
+        "image": "assets/img/enzoknol.png"
+    },
+    {
+        "id": 2,
+        "name": "Milan Knol",
+        "price": 19.99,
+        "image": "assets/img/me.png"
+    },
+    {
+        "id": 3,
+        "name": "Carlos",
+        "price": 29.99,
+        "image": "assets/img/carlos.png"
+    },
+    {
+        "id": 4,
+        "name": "Koen",
+        "price": 19.99,
+        "image": "assets/img/koen.png"
+    }
+]
