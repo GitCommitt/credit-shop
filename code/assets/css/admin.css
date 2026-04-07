@@ -55,7 +55,7 @@ h1 {
 
 .overzicht-producten .admin-product-header,
 .product-row {
-    grid-template-columns: 60px 150px 1fr 100px 30px;
+    grid-template-columns: 60px 150px 1fr 100px 20px 20px;
     justify-content: stretch;
 }
 
@@ -142,4 +142,15 @@ h1 {
 
 .remove-product-button:hover svg {
     fill: #e74c3c;
+}
+.edit-product-button {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.edit-product-button:hover svg {
+    fill: grey;
 }
