@@ -21,13 +21,24 @@ const loadOrders = () => {
 
 const loadProductsAdmin = () => {
     if (!adminProducts) return;
-    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    
+    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
+    if (productenLokaal == null){
+        
     fetch('product.json')
         .then(res => res.json())
         .then(jsonProducts => {
-            //
-            const gecombineerdeProducten = [...jsonProducts, ...productenLokaal];
+            for (let i = 0; i < jsonProducts.length; i++) {
+                
+                
+                addProduct(jsonProducts[i].id,jsonProducts[i].naam, jsonProducts[i].prijs, jsonProducts[i].afbeelding)
+            }
+        
+        
+        loadProductsAdmin();
+        })
+
+    }else{
+        const gecombineerdeProducten = productenLokaal;
             adminProducts.innerHTML = gecombineerdeProducten.map(p => `
                 <div class="admin-product-card product-row">
                     <p>${p.id}</p>
@@ -46,18 +57,8 @@ const loadProductsAdmin = () => {
                             </svg></a>
                     </div>
                 </div>
-            `).join('');
-        })
-        .catch(() => {
-            adminProducts.innerHTML = productenLokaal.map(p => `
-                <div class="admin-product-card product-row">
-                    <p>${p.id}</p>
-                    <p><strong>${p.naam}</strong></p>
-                    <p style="font-size: 0.7rem; color: gray;">${p.afbeelding}</p>
-                    <p>€${p.prijs}</p>
-                </div>
-            `).join('');
-        });
+            `).join('')
+    }
 };
 
 if (productForm) {
@@ -70,24 +71,33 @@ if (productForm) {
         
         let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
 
-        const hoogsteId = producten.length > 0 
-            ? Math.max(...producten.map(p => parseInt(p.id) || 0)) 
-            : 0;
+        let hoogsteId =0;
+        if(producten.length>0)
+            {
+                hoogsteId = Math.max(...producten.map(p => p.id));
+            }
         
-        const nieuwProduct = { 
-            id: hoogsteId + 1, 
-            naam: naam, 
-            prijs: prijs, 
-            afbeelding: afbeelding 
-        };
-        
-        producten.push(nieuwProduct);
-        localStorage.setItem('mijnProducten', JSON.stringify(producten));
+        addProduct(hoogsteId + 1,naam, prijs, afbeelding)
+        console.log(hoogsteId)
         
         alert('Product toegevoegd!');
         productForm.reset();
         loadProductsAdmin();
     });
+}
+
+function addProduct(id,naam, prijs, afbeelding){
+    const nieuwProduct = { 
+            id: id, 
+            naam: naam, 
+            prijs: prijs, 
+            afbeelding: afbeelding 
+        };
+
+        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+        
+        producten.push(nieuwProduct);
+        localStorage.setItem('mijnProducten', JSON.stringify(producten));
 }
 
 function removeProduct(id) {

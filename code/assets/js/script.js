@@ -13,16 +13,7 @@ const updateUI = () => {
 const loadAllProducts = () => {
     if (!productsContainer) return;
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-
-    fetch('product.json')
-        .then(res => res.json())
-        .then(jsonProducts => {
-            const alleProducten = [...jsonProducts, ...lokaleProducten];
-            renderProducts(alleProducten);
-        })
-        .catch(() => {
-            renderProducts(lokaleProducten);
-        });
+    renderProducts(lokaleProducten);
 };
 
 function renderProducts(productenLijst) {

@@ -1,26 +1,32 @@
 [
     {
         "id": 1,
-        "name": "Enzo Knol",
-        "price": 9.99,
-        "image": "assets/img/enzoknol.png"
+        "naam": "Enzo Knol",
+        "prijs": 9.99,
+        "afbeelding": "assets/img/enzoknol.png"
     },
     {
         "id": 2,
-        "name": "Milan Knol",
-        "price": 19.99,
-        "image": "assets/img/me.png"
+        "naam": "Milan Knol",
+        "prijs": 19.99,
+        "afbeelding": "assets/img/me.png"
     },
     {
         "id": 3,
-        "name": "Carlos",
-        "price": 29.99,
-        "image": "assets/img/carlos.png"
+        "naam": "Carlos",
+        "prijs": 29.99,
+        "afbeelding": "assets/img/carlos.png"
     },
     {
         "id": 4,
-        "name": "Koen",
-        "price": 19.99,
-        "image": "assets/img/koen.png"
+        "naam": "Koen",
+        "prijs": 19.99,
+        "afbeelding": "assets/img/koen.png"
+    },
+    {
+        "id": 5,
+        "naam": "Fardin",
+        "prijs": 19.99,
+        "afbeelding": "assets/img/koen.png"
     }
 ]
