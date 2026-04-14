@@ -80,7 +80,6 @@ if (productForm) {
         addProduct(hoogsteId + 1,naam, prijs, afbeelding)
         console.log(hoogsteId)
         
-        alert('Product toegevoegd!');
         productForm.reset();
         loadProductsAdmin();
     });
@@ -108,18 +107,25 @@ function removeProduct(id) {
 
     localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
 
-    alert("Product is succesvol verwijderd!");
     loadProductsAdmin(); 
 }
 
 function editProduct(id) {
-
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+    const product = lokaleProducten.find(p => p.id === id);
 
-    const nieuweLijst = lokaleProducten.filter(p => p.id != id);
+    if (!product) {
+        alert("Product niet gevonden!");
+        return;
+    }
 
-    localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
-    loadProductsAdmin(); 
+    document.getElementById('edit-naam').value = product.name || product.naam;
+    document.getElementById('edit-prijs').value = product.price || product.prijs;
+    document.getElementById('edit-afbeelding').value = product.image || product.afbeelding;
+
+    document.getElementById('editProductForm').dataset.productId = id;
+
+    openEditModal();
 }
 
 
@@ -131,7 +137,65 @@ const resetAdmin = () => {
     }
 };
 
+function openEditModal() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.classList.add('show');
+    }
+}
+
+function closeeditModal() {
+    const modal = document.getElementById('editModal');
+    if (modal) {
+        modal.classList.remove('show');
+        document.getElementById('editProductForm').reset();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('editModal');
+    const closeBtn = document.querySelector('.close');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeeditModal);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeeditModal();
+            }
+        });
+    }
+
+    const editForm = document.getElementById('editProductForm');
+    if (editForm) {
+        editForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const productId = parseInt(this.dataset.productId);
+            const naam = document.getElementById('edit-naam').value;
+            const prijs = document.getElementById('edit-prijs').value;
+            const afbeelding = document.getElementById('edit-afbeelding').value;
+
+            let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+            const productIndex = lokaleProducten.findIndex(p => p.id === productId);
+
+            if (productIndex !== -1) {
+                lokaleProducten[productIndex] = {
+                    id: productId,
+                    naam: naam,
+                    prijs: parseFloat(prijs),
+                    afbeelding: afbeelding
+                };
+
+                localStorage.setItem('mijnProducten', JSON.stringify(lokaleProducten));
+                closeeditModal();
+                loadProductsAdmin();
+            }
+        });
+    }
+
     loadOrders();
     loadProductsAdmin();
 });
