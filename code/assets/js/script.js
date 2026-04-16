@@ -1,4 +1,4 @@
-import {loadProductsFromStorage} from "./shared.js";
+import { loadProductsFromStorage } from "./shared.js";
 
 const productsContainer = document.getElementById('productsContainer');
 const cartDisplay = document.getElementById('cart-display');

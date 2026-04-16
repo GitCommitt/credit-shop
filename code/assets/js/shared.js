@@ -17,7 +17,7 @@ export const loadProductsFromStorage = (render) => {
     }
 };
 
-function addProduct(id, naam, prijs, afbeelding) {
+export function addProduct(id, naam, prijs, afbeelding) {
     const nieuwProduct = {
         id: id,
         naam: naam,

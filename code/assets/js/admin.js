@@ -1,4 +1,4 @@
-import {loadProductsFromStorage,addProduct} from "./shared.js";
+import { loadProductsFromStorage, addProduct } from "./shared.js";
 
 
 const orderContainer = document.getElementById('admin-orders');
