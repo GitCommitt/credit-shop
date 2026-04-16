@@ -10,10 +10,6 @@ const updateUI = () => {
     if (cartDisplay) renderCartPage();
 };
 
-function loadProductsFromStorage(callback) {
-    const producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    callback(producten);
-}
 
 const loadAllProducts = () => {
     if (!productsContainer) return;
