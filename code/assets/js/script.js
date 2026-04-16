@@ -48,7 +48,7 @@ function AddProduct(id) {
     updateUI();
 }
 
-function addProductWithDelay(id, button) {
+export function addProductWithDelay(id, button) {
     button.disabled = true;
     AddProduct(id);
     setTimeout(() => {
@@ -98,7 +98,7 @@ function renderCartPage() {
     if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
 }
 
-function exportAndClearCart() {
+export function exportAndClearCart() {
     let cart = getCart();
     if (Object.keys(cart).length === 0) {
         alert("Mandje is leeg");
@@ -153,3 +153,5 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUI();
     loadAllProducts();
 });
+window.exportAndClearCart = exportAndClearCart;
+window.addProductWithDelay = addProductWithDelay;

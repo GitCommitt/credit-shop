@@ -93,7 +93,7 @@ export function editProduct(id) {
     openEditModal();
 }
 
-const resetAdmin = () => {
+export const resetAdmin = () => {
     if (window.confirm("Bestellingen wissen?")) {
         localStorage.removeItem('all_orders');
         loadOrders();
@@ -107,7 +107,7 @@ function openEditModal() {
     }
 }
 
-function closeeditModal() {
+export function closeeditModal() {
     const modal = document.getElementById('editModal');
     if (modal) {
         modal.classList.remove('show');
@@ -166,3 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // expose it to the global window object
 window.removeProduct = removeProduct;
 window.editProduct = editProduct;
+window.resetAdmin = resetAdmin;
+window.closeeditModal = closeeditModal;
