@@ -12,8 +12,10 @@ const updateUI = () => {
 
 const loadAllProducts = () => {
     if (!productsContainer) return;
-    const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    renderProducts(lokaleProducten);
+
+    loadProductsFromStorage( (lokaleProducten) => {
+        renderProducts(lokaleProducten);
+    })
 };
 
 function renderProducts(productenLijst) {

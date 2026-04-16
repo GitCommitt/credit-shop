@@ -21,23 +21,7 @@ const loadOrders = () => {
 
 const loadProductsAdmin = () => {
     if (!adminProducts) return;
-    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
-    if (productenLokaal == null){
-        
-    fetch('product.json')
-        .then(res => res.json())
-        .then(jsonProducts => {
-            for (let i = 0; i < jsonProducts.length; i++) {
-                
-                
-                addProduct(jsonProducts[i].id,jsonProducts[i].naam, jsonProducts[i].prijs, jsonProducts[i].afbeelding)
-            }
-        
-        
-        loadProductsAdmin();
-        })
-
-    }else{
+    loadProductsFromStorage( (productenLokaal) => {
         const gecombineerdeProducten = productenLokaal;
             adminProducts.innerHTML = gecombineerdeProducten.map(p => `
                 <div class="admin-product-card product-row">
@@ -57,8 +41,8 @@ const loadProductsAdmin = () => {
                             </svg></a>
                     </div>
                 </div>
-            `).join('')
-    }
+            `).join('')}) 
+
 };
 
 if (productForm) {
@@ -83,20 +67,6 @@ if (productForm) {
         productForm.reset();
         loadProductsAdmin();
     });
-}
-
-function addProduct(id,naam, prijs, afbeelding){
-    const nieuwProduct = { 
-            id: id, 
-            naam: naam, 
-            prijs: prijs, 
-            afbeelding: afbeelding 
-        };
-
-        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-        
-        producten.push(nieuwProduct);
-        localStorage.setItem('mijnProducten', JSON.stringify(producten));
 }
 
 function removeProduct(id) {
