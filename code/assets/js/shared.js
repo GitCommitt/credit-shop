@@ -107,6 +107,13 @@ const loadProductsFromStorage = (render) => {
     }
 };
 
+function removeProduct(id) {
+    let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+    const nieuweLijst = lokaleProducten.filter(p => p.id !== id);
+    localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
+    loadProductsAdmin();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('editModal');
     const closeBtn = document.querySelector('.close');

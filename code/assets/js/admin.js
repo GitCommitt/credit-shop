@@ -19,13 +19,6 @@ const loadOrders = () => {
     `).join('');
 };
 
-function removeProduct(id) {
-    let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    const nieuweLijst = lokaleProducten.filter(p => p.id !== id);
-    localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
-    loadProductsAdmin();
-}
-
 function editProduct(id) {
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
     const product = lokaleProducten.find(p => p.id === id);
