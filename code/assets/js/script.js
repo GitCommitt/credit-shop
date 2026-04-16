@@ -10,12 +10,12 @@ const updateUI = () => {
     if (cartDisplay) renderCartPage();
 };
 
-
 const loadAllProducts = () => {
     if (!productsContainer) return;
-    loadProductsFromStorage((lokaleProducten) => {
+
+    loadProductsFromStorage( (lokaleProducten) => {
         renderProducts(lokaleProducten);
-    });
+    })
 };
 
 function renderProducts(productenLijst) {
@@ -56,9 +56,7 @@ function addProductWithDelay(id, button) {
 
 function displayCounts() {
     const cart = getCart();
-    document.querySelectorAll('.product-count').forEach(el => {
-        el.innerText = "Aantal in winkelwagen: 0";
-    });
+    document.querySelectorAll('.product-count').forEach(el => el.innerText = "Aantal in winkelwagen: 0");
     Object.entries(cart).forEach(([id, count]) => {
         const el = document.getElementById(`count-${id}`);
         if (el) el.innerText = `Aantal in winkelwagen: ${count}`;
@@ -77,33 +75,32 @@ function renderCartPage() {
     if (!cartDisplay) return;
     const cart = getCart();
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    let total = 0;
-    const html = lokaleProducten.filter(p => cart[p.id]).map(p => {
-        const prijs = parseFloat(p.price || p.prijs);
-        const afbeelding = p.image || p.afbeelding;
-        const sub = prijs * cart[p.id];
-        total += sub;
-        return `
-            <div class="cart-item cart-random"">
-                <img class="img-random" src="${afbeelding}">
-                <div style="flex-grow:1;">
-                    <h4>${p.name || p.naam}</h4>
-                    <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
-                </div>
-                <strong>€${sub.toFixed(2)}</strong>
-            </div>`;
-    }).join('');
-    cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
-    if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
+            let total = 0;
+            const html = lokaleProducten.filter(p => cart[p.id]).map(p => {
+                const prijs = parseFloat(p.price || p.prijs);
+                const afbeelding = p.image || p.afbeelding;
+                const sub = prijs * cart[p.id];
+                total += sub;
+                return `
+                    <div class="cart-item" style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
+                        <img src="${afbeelding}" style="width:80px; height:80px; object-fit:cover;">
+                        <div style="flex-grow:1;">
+                            <h4>${p.name || p.naam}</h4>
+                            <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
+                        </div>
+                        <strong>€${sub.toFixed(2)}</strong>
+                    </div>`;
+            }).join('');
+            cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
+            if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
 }
 
 async function exportAndClearCart() {
     let cart = getCart();
-    if (Object.keys(cart).length === 0) {
-        alert('Mandje is leeg');
-        return;
-    }
+    if (Object.keys(cart).length === 0) return alert("Mandje is leeg");
+    
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+    
     try {
         let totaal = 0;
         let items = [];
@@ -118,9 +115,9 @@ async function exportAndClearCart() {
         });
 
         let bestellingen = JSON.parse(localStorage.getItem('all_orders')) || [];
-
-        const hoogsteId = bestellingen.length > 0
-            ? Math.max(...bestellingen.map(o => parseInt(o.id) || 0))
+        
+        const hoogsteId = bestellingen.length > 0 
+            ? Math.max(...bestellingen.map(o => parseInt(o.id) || 0)) 
             : 0;
         const nieuwId = hoogsteId + 1;
 
@@ -128,23 +125,25 @@ async function exportAndClearCart() {
             id: nieuwId,
             datum: new Date().toLocaleDateString('nl-NL'),
             producten: items,
-            totaalbedrag: totaal.toFixed(2),
+            totaalbedrag: totaal.toFixed(2)
         };
 
         bestellingen.push(nieuweBestelling);
         localStorage.setItem('all_orders', JSON.stringify(bestellingen));
+        
         localStorage.removeItem('cart');
-        alert('Bestelling succesvol geplaatst!');
-        window.location.reload();
+        alert("Bestelling succesvol geplaatst!");
+        location.reload(); 
+        
     } catch (error) {
-        console.error('Fout bij afrekenen:', error);
-        alert('Er ging iets mis bij het verwerken van de producten.');
+        console.error("Fout bij afrekenen:", error);
+        alert("Er ging iets mis bij het verwerken van de producten.");
     }
 }
 
-function clearCart() {
+function clearCart(){
     localStorage.removeItem('cart');
-    window.location.reload();
+    location.reload(); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {

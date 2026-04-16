@@ -14,7 +14,7 @@ body {
     align-items: center;
     background-color: #fff;
     border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .shoppingcart-icon {
@@ -85,7 +85,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
     transition: all 0.3s ease;
 }
 
@@ -188,18 +188,4 @@ body {
     border-radius: 50%;
     margin-bottom: 30px;
     box-shadow: 0 10px 20px rgba(52, 199, 89, 0.2);
-}
-
-.card-random {
-    display:flex; 
-    align-items:center; 
-    gap:20px; 
-    border-bottom:1px solid #ddd; 
-    padding:10px 0;
-}
-
-.img-random{
-    width:80px; 
-    height:80px; 
-    object-fit:cover;
 }
