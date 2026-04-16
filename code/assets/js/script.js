@@ -56,7 +56,7 @@ function addProductWithDelay(id, button) {
 
 function displayCounts() {
     const cart = getCart();
-    document.querySelectorAll('.product-count').forEach(el => { el.innerText = "Aantal in winkelwagen: 0" });
+    document.querySelectorAll('.product-count').forEach(el => { el.innerText = "Aantal in winkelwagen: 0"; });
     Object.entries(cart).forEach(([id, count]) => {
         const el = document.getElementById(`count-${id}`);
         if (el) el.innerText = `Aantal in winkelwagen: ${count}`;
@@ -82,7 +82,8 @@ function renderCartPage() {
         const sub = prijs * cart[p.id];
         total += sub;
         return `
-                    <div class="cart-item" style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
+                    <div class="cart-item" style="display:flex; align-items:center; 
+                    gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
                         <img src="${afbeelding}" style="width:80px; height:80px; object-fit:cover;">
                         <div style="flex-grow:1;">
                             <h4>${p.name || p.naam}</h4>

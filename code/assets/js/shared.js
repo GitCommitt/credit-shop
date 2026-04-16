@@ -22,7 +22,7 @@ function addProduct(id, naam, prijs, afbeelding) {
         id: id,
         naam: naam,
         prijs: prijs,
-        afbeelding: afbeelding
+        afbeelding: afbeelding,
     };
 
     let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
