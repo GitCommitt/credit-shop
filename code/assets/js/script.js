@@ -130,13 +130,12 @@ function exportAndClearCart() {
             producten: items,
             totaalbedrag: totaal.toFixed(2),
         };
-
         bestellingen.push(nieuweBestelling);
         localStorage.setItem('all_orders', JSON.stringify(bestellingen));
 
         localStorage.removeItem('cart');
         alert("Bestelling succesvol geplaatst!");
-        location.reload();
+        window.location.reload();
 
     } catch (error) {
         console.error("Fout bij afrekenen:", error);
