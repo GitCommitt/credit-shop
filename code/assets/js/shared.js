@@ -1,22 +1,3 @@
-const loadProductsFromStorage = (render) => {
-    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
-    if (productenLokaal == null) {
-        fetch('product.json')
-            .then(res => res.json())
-            .then(jsonProducts => {
-                for (let i = 0; i < jsonProducts.length; i++) {
-                    addProduct(jsonProducts[i].id,
-                        jsonProducts[i].naam,
-                        jsonProducts[i].prijs,
-                        jsonProducts[i].afbeelding);
-                }
-                loadProductsFromStorage(render);
-            });
-    } else {
-        render(productenLokaal);
-    }
-};
-
 function addProduct(id,naam, prijs, afbeelding){
     const nieuwProduct = { 
             id: id, 
@@ -106,3 +87,68 @@ if (productForm) {
         loadProductsAdmin();
     });
 }
+
+const loadProductsFromStorage = (render) => {
+    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
+    if (productenLokaal == null) {
+        fetch('product.json')
+            .then(res => res.json())
+            .then(jsonProducts => {
+                for (let i = 0; i < jsonProducts.length; i++) {
+                    addProduct(jsonProducts[i].id,
+                        jsonProducts[i].naam,
+                        jsonProducts[i].prijs,
+                        jsonProducts[i].afbeelding);
+                }
+                loadProductsFromStorage(render);
+            });
+    } else {
+        render(productenLokaal);
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('editModal');
+    const closeBtn = document.querySelector('.close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeeditModal);
+    }
+    if (modal) {
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeeditModal();
+            }
+        });
+    }
+
+    const editForm = document.getElementById('editProductForm');
+    if (editForm) {
+        editForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const productId = parseInt(this.dataset.productId);
+            const naam = document.getElementById('edit-naam').value;
+            const prijs = document.getElementById('edit-prijs').value;
+            const afbeelding = document.getElementById('edit-afbeelding').value;
+
+            let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+            const productIndex = lokaleProducten.findIndex(p => p.id === productId);
+
+            if (productIndex !== -1) {
+                lokaleProducten[productIndex] = {
+                    id: productId,
+                    naam: naam,
+                    prijs: parseFloat(prijs),
+                    afbeelding: afbeelding,
+                };
+
+                localStorage.setItem('mijnProducten', JSON.stringify(lokaleProducten));
+                closeeditModal();
+                loadProductsAdmin();
+            }
+        });
+    }
+
+    loadOrders();
+    loadProductsAdmin();
+});
