@@ -1,3 +1,5 @@
+import {loadProductsFromStorage} from "./shared.js";
+
 const productsContainer = document.getElementById('productsContainer');
 const cartDisplay = document.getElementById('cart-display');
 const totalPriceElement = document.getElementById('total-price');
@@ -96,7 +98,7 @@ function renderCartPage() {
     if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
 }
 
-async function exportAndClearCart() {
+function exportAndClearCart() {
     let cart = getCart();
     if (Object.keys(cart).length === 0) return alert("Mandje is leeg");
 

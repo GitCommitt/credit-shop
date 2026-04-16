@@ -1,4 +1,4 @@
-const loadProductsFromStorage = (render) => {
+export const loadProductsFromStorage = (render) => {
     let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
     if (productenLokaal == null) {
         fetch('product.json')

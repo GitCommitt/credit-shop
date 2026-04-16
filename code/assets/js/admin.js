@@ -1,3 +1,6 @@
+import {loadProductsFromStorage} from "./shared.js";
+
+
 const orderContainer = document.getElementById('admin-orders');
 const adminProducts = document.getElementById('admin-producten');
 const productForm = document.getElementById('productForm');
@@ -62,7 +65,7 @@ if (productForm) {
     });
 }
 
-function removeProduct(id) {
+export function removeProduct(id) {
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
 
     const nieuweLijst = lokaleProducten.filter(p => p.id != id);
@@ -72,7 +75,7 @@ function removeProduct(id) {
     loadProductsAdmin();
 }
 
-function editProduct(id) {
+export function editProduct(id) {
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
     const product = lokaleProducten.find(p => p.id === id);
 
@@ -159,3 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadOrders();
     loadProductsAdmin();
 });
+
+// expose it to the global window object
+window.removeProduct = removeProduct;
+window.editProduct = editProduct;
