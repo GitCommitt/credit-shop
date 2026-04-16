@@ -38,26 +38,24 @@ const loadProductsAdmin = () => {
                     </div>
                 </div>
             `).join('');
-        });
+    });
 };
 
 if (productForm) {
     productForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const naam = document.getElementById('naam').value;
         const prijs = document.getElementById('prijs').value;
-        const afbeelding = document 
-          .getElementById('afbeelding').value;
-        
-        let producten = JSON.parse(localStorage.getItem('mijnProducten')) 
-          || [];
+        const afbeelding = document.getElementById('afbeelding').value;
+
+        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
 
         let hoogsteId = 0;
         if (producten.length > 0) {
             hoogsteId = Math.max(...producten.map(p => p.id));
         }
-        
+
         addProduct(hoogsteId + 1, naam, prijs, afbeelding);
         productForm.reset();
         loadProductsAdmin();
@@ -71,7 +69,7 @@ function removeProduct(id) {
 
     localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
 
-    loadProductsAdmin(); 
+    loadProductsAdmin();
 }
 
 function editProduct(id) {
@@ -117,13 +115,13 @@ function closeeditModal() {
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('editModal');
     const closeBtn = document.querySelector('.close');
-    
+
     if (closeBtn) {
         closeBtn.addEventListener('click', closeeditModal);
     }
 
     if (modal) {
-        modal.addEventListener('click', function(event) {
+        modal.addEventListener('click', function (event) {
             if (event.target === modal) {
                 closeeditModal();
             }
@@ -132,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const editForm = document.getElementById('editProductForm');
     if (editForm) {
-        editForm.addEventListener('submit', function(e) {
+        editForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             const productId = parseInt(this.dataset.productId);
