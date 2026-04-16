@@ -26,3 +26,17 @@ De onderstaande technieken worden gebruikt in de website
 
 ###
 ![alt text](flowchart.png)
+
+# Handleiding & Functionaliteiten
+
+## Website draaien
+1. Open de projectmap in je browser of editor.
+2. Start `index.html` (bijv. via Live Server) om de shop te bekijken.
+3. Open `admin.html` voor het beheerderspaneel.
+
+## Wat kan het?
+* **Producten Pagina:** Via `index.html` Kun je producten kiezen en toevoegen aan het winkelmandje.
+* **Winkelmandje**: Via `shopping-cart.html` kun je producten toegevoegde producten zien, producten verwijderen en bestellingen plaatsen.
+* **Admin Interface**: Via `admin.html` kun je kiezen uit twee opties:
+    * **Producten beheren**: Toevoegen, wijzigen en verwijderen van het assortiment.
+    * **Bestellingen beheren**: Bestellingen inzien en verwijderen uit de lijst.

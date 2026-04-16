@@ -31,7 +31,8 @@ function renderProducts(productenLijst) {
                 <h3>${naam}</h3>
                 <p>Prijs: €${prijs}</p>
                 <p id="count-${id}" class="product-count">Aantal in winkelwagen: 0</p>
-                <button onclick="AddProduct(${id})" class="product-button">Voeg toe</button>
+                <button onclick="addProductWithDelay(${id}, this)" \
+                class="product-button">Voeg toe</button>
             </div>
         `;
     }).join('');
@@ -43,6 +44,14 @@ function AddProduct(id) {
     cart[id] = (cart[id] || 0) + 1;
     localStorage.setItem('cart', JSON.stringify(cart));
     updateUI();
+}
+
+function addProductWithDelay(id, button) {
+    button.disabled = true;
+    AddProduct(id);
+    setTimeout(() => {
+        button.disabled = false;
+    }, 300);
 }
 
 function displayCounts() {
@@ -140,6 +149,11 @@ async function exportAndClearCart() {
         console.error("Fout bij afrekenen:", error);
         alert("Er ging iets mis bij het verwerken van de producten.");
     }
+}
+
+function clearCart(){
+    localStorage.removeItem('cart');
+    location.reload(); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
