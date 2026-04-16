@@ -10,6 +10,11 @@ const updateUI = () => {
     if (cartDisplay) renderCartPage();
 };
 
+function loadProductsFromStorage(callback) {
+    const producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+    callback(producten);
+}
+
 const loadAllProducts = () => {
     if (!productsContainer) return;
     loadProductsFromStorage((lokaleProducten) => {
@@ -83,8 +88,8 @@ function renderCartPage() {
         const sub = prijs * cart[p.id];
         total += sub;
         return `
-            <div class="cart-item" style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
-                <img src="${afbeelding}" style="width:80px; height:80px; object-fit:cover;">
+            <div class="cart-item cart-random"">
+                <img class="img-random" src="${afbeelding}">
                 <div style="flex-grow:1;">
                     <h4>${p.name || p.naam}</h4>
                     <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
@@ -117,9 +122,9 @@ async function exportAndClearCart() {
         });
 
         let bestellingen = JSON.parse(localStorage.getItem('all_orders')) || [];
-        
-        const hoogsteId = bestellingen.length > 0 
-            ? Math.max(...bestellingen.map(o => parseInt(o.id) || 0)) 
+
+        const hoogsteId = bestellingen.length > 0
+            ? Math.max(...bestellingen.map(o => parseInt(o.id) || 0))
             : 0;
         const nieuwId = hoogsteId + 1;
 
