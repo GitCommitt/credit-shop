@@ -12,10 +12,9 @@ const updateUI = () => {
 
 const loadAllProducts = () => {
     if (!productsContainer) return;
-
-    loadProductsFromStorage( (lokaleProducten) => {
+    loadProductsFromStorage((lokaleProducten) => {
         renderProducts(lokaleProducten);
-    })
+    });
 };
 
 function renderProducts(productenLijst) {

@@ -50,16 +50,13 @@ const loadProductsAdmin = () => {
 };
 
 if (productForm) {
-    productForm.addEventListener('submit', function (e) {
+    productForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const naam = document.getElementById('naam').value;
         const prijs = document.getElementById('prijs').value;
-        const afbeelding = document 
-          .getElementById('afbeelding').value;
-        
-        let producten = JSON.parse(localStorage.getItem('mijnProducten')) 
-          || [];
+        const afbeelding = document.getElementById('afbeelding').value;
+        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
 
         let hoogsteId = 0;
         if (producten.length > 0) {
@@ -74,12 +71,9 @@ if (productForm) {
 
 function removeProduct(id) {
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-
-    const nieuweLijst = lokaleProducten.filter(p => p.id != id);
-
+    const nieuweLijst = lokaleProducten.filter(p => p.id !== id);
     localStorage.setItem('mijnProducten', JSON.stringify(nieuweLijst));
-
-    loadProductsAdmin(); 
+    loadProductsAdmin();
 }
 
 function editProduct(id) {
@@ -101,7 +95,7 @@ function editProduct(id) {
 }
 
 const resetAdmin = () => {
-    if (confirm("Bestellingen wissen?")) {
+    if (window.confirm('Bestellingen wissen?')) {
         localStorage.removeItem('all_orders');
         loadOrders();
     }
@@ -125,11 +119,9 @@ function closeeditModal() {
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('editModal');
     const closeBtn = document.querySelector('.close');
-    
     if (closeBtn) {
         closeBtn.addEventListener('click', closeeditModal);
     }
-
     if (modal) {
         modal.addEventListener('click', function(event) {
             if (event.target === modal) {
@@ -156,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: productId,
                     naam: naam,
                     prijs: parseFloat(prijs),
-                    afbeelding: afbeelding
+                    afbeelding: afbeelding,
                 };
 
                 localStorage.setItem('mijnProducten', JSON.stringify(lokaleProducten));
