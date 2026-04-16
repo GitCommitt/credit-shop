@@ -75,13 +75,8 @@ function renderCartPage() {
     if (!cartDisplay) return;
     const cart = getCart();
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-
-    fetch('product.json')
-        .then(res => res.json())
-        .then(jsonProducts => {
-            const alleProducten = [...jsonProducts, ...lokaleProducten];
             let total = 0;
-            const html = alleProducten.filter(p => cart[p.id]).map(p => {
+            const html = lokaleProducten.filter(p => cart[p.id]).map(p => {
                 const prijs = parseFloat(p.price || p.prijs);
                 const afbeelding = p.image || p.afbeelding;
                 const sub = prijs * cart[p.id];
@@ -98,7 +93,6 @@ function renderCartPage() {
             }).join('');
             cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
             if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
-        });
 }
 
 async function exportAndClearCart() {
@@ -108,14 +102,10 @@ async function exportAndClearCart() {
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
     
     try {
-        const res = await fetch('product.json');
-        const jsonProducts = await res.json();
-        const alleProducten = [...jsonProducts, ...lokaleProducten];
-
         let totaal = 0;
         let items = [];
 
-        alleProducten.forEach(p => {
+        lokaleProducten.forEach(p => {
             if (cart[p.id]) {
                 const prijs = parseFloat(p.price || p.prijs);
                 const naam = p.name || p.naam;
