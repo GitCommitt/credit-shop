@@ -138,7 +138,6 @@ function exportAndClearCart() {
         localStorage.removeItem('cart');
         alert("Bestelling succesvol geplaatst!");
         window.location.reload();
-
     } catch (error) {
         console.error("Fout bij afrekenen:", error);
         alert("Er ging iets mis bij het verwerken van de producten.");
