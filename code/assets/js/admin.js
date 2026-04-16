@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: productId,
                     naam: naam,
                     prijs: parseFloat(prijs),
-                    afbeelding: afbeelding
+                    afbeelding: afbeelding,
                 };
 
                 localStorage.setItem('mijnProducten', JSON.stringify(lokaleProducten));
