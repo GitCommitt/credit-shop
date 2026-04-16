@@ -94,7 +94,7 @@ export function editProduct(id) {
 }
 
 const resetAdmin = () => {
-    if (confirm("Bestellingen wissen?")) {
+    if (window.confirm("Bestellingen wissen?")) {
         localStorage.removeItem('all_orders');
         loadOrders();
     }

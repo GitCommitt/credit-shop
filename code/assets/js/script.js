@@ -100,7 +100,10 @@ function renderCartPage() {
 
 function exportAndClearCart() {
     let cart = getCart();
-    if (Object.keys(cart).length === 0) return alert("Mandje is leeg");
+    if (Object.keys(cart).length === 0) {
+        alert("Mandje is leeg");
+        return;
+    }
 
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
 
@@ -132,7 +135,6 @@ function exportAndClearCart() {
         };
         bestellingen.push(nieuweBestelling);
         localStorage.setItem('all_orders', JSON.stringify(bestellingen));
-
         localStorage.removeItem('cart');
         alert("Bestelling succesvol geplaatst!");
         window.location.reload();
@@ -145,7 +147,7 @@ function exportAndClearCart() {
 
 function clearCart() {
     localStorage.removeItem('cart');
-    location.reload();
+    window.location.reload();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
