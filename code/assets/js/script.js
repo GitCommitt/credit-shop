@@ -55,7 +55,9 @@ function addProductWithDelay(id, button) {
 
 function displayCounts() {
     const cart = getCart();
-    document.querySelectorAll('.product-count').forEach(el => el.innerText = "Aantal in winkelwagen: 0");
+    document.querySelectorAll('.product-count').forEach(el => {
+        el.innerText = "Aantal in winkelwagen: 0";
+    });
     Object.entries(cart).forEach(([id, count]) => {
         const el = document.getElementById(`count-${id}`);
         if (el) el.innerText = `Aantal in winkelwagen: ${count}`;
@@ -74,24 +76,24 @@ function renderCartPage() {
     if (!cartDisplay) return;
     const cart = getCart();
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-            let total = 0;
-            const html = lokaleProducten.filter(p => cart[p.id]).map(p => {
-                const prijs = parseFloat(p.price || p.prijs);
-                const afbeelding = p.image || p.afbeelding;
-                const sub = prijs * cart[p.id];
-                total += sub;
-                return `
-                    <div class="cart-item" style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
-                        <img src="${afbeelding}" style="width:80px; height:80px; object-fit:cover;">
-                        <div style="flex-grow:1;">
-                            <h4>${p.name || p.naam}</h4>
-                            <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
-                        </div>
-                        <strong>€${sub.toFixed(2)}</strong>
-                    </div>`;
-            }).join('');
-            cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
-            if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
+    let total = 0;
+    const html = lokaleProducten.filter(p => cart[p.id]).map(p => {
+        const prijs = parseFloat(p.price || p.prijs);
+        const afbeelding = p.image || p.afbeelding;
+        const sub = prijs * cart[p.id];
+        total += sub;
+        return `
+            <div class="cart-item" style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #ddd; padding:10px 0;">
+                <img src="${afbeelding}" style="width:80px; height:80px; object-fit:cover;">
+                <div style="flex-grow:1;">
+                    <h4>${p.name || p.naam}</h4>
+                    <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
+                </div>
+                <strong>€${sub.toFixed(2)}</strong>
+            </div>`;
+    }).join('');
+    cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
+    if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
 }
 
 async function exportAndClearCart() {
