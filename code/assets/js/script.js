@@ -98,10 +98,11 @@ function renderCartPage() {
 
 async function exportAndClearCart() {
     let cart = getCart();
-    if (Object.keys(cart).length === 0) return alert("Mandje is leeg");
-    
+    if (Object.keys(cart).length === 0) {
+        alert('Mandje is leeg');
+        return;
+    }
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-    
     try {
         let totaal = 0;
         let items = [];
@@ -126,25 +127,23 @@ async function exportAndClearCart() {
             id: nieuwId,
             datum: new Date().toLocaleDateString('nl-NL'),
             producten: items,
-            totaalbedrag: totaal.toFixed(2)
+            totaalbedrag: totaal.toFixed(2),
         };
 
         bestellingen.push(nieuweBestelling);
         localStorage.setItem('all_orders', JSON.stringify(bestellingen));
-        
         localStorage.removeItem('cart');
-        alert("Bestelling succesvol geplaatst!");
-        location.reload(); 
-        
+        alert('Bestelling succesvol geplaatst!');
+        window.location.reload();
     } catch (error) {
-        console.error("Fout bij afrekenen:", error);
-        alert("Er ging iets mis bij het verwerken van de producten.");
+        console.error('Fout bij afrekenen:', error);
+        alert('Er ging iets mis bij het verwerken van de producten.');
     }
 }
 
-function clearCart(){
+function clearCart() {
     localStorage.removeItem('cart');
-    location.reload(); 
+    window.location.reload();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
