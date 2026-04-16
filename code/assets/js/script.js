@@ -125,7 +125,7 @@ async function exportAndClearCart() {
             id: nieuwId,
             datum: new Date().toLocaleDateString('nl-NL'),
             producten: items,
-            totaalbedrag: totaal.toFixed(2)
+            totaalbedrag: totaal.toFixed(2),
         };
 
         bestellingen.push(nieuweBestelling);

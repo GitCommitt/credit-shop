@@ -17,16 +17,16 @@ const loadProductsFromStorage = (render) => {
     }
 };
 
-function addProduct(id,naam, prijs, afbeelding){
-    const nieuwProduct = { 
-            id: id, 
-            naam: naam, 
-            prijs: prijs, 
-            afbeelding: afbeelding 
-        };
+function addProduct(id, naam, prijs, afbeelding) {
+    const nieuwProduct = {
+        id: id,
+        naam: naam,
+        prijs: prijs,
+        afbeelding: afbeelding
+    };
 
-        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-        
-        producten.push(nieuwProduct);
-        localStorage.setItem('mijnProducten', JSON.stringify(producten));
+    let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
+
+    producten.push(nieuwProduct);
+    localStorage.setItem('mijnProducten', JSON.stringify(producten));
 }
