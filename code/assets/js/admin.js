@@ -19,25 +19,6 @@ const loadOrders = () => {
     `).join('');
 };
 
-if (productForm) {
-    productForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const naam = document.getElementById('naam').value;
-        const prijs = document.getElementById('prijs').value;
-        const afbeelding = document.getElementById('afbeelding').value;
-        let producten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
-
-        let hoogsteId = 0;
-        if (producten.length > 0) {
-            hoogsteId = Math.max(...producten.map(p => p.id));
-        }
-        
-        addProduct(hoogsteId + 1, naam, prijs, afbeelding);
-        productForm.reset();
-        loadProductsAdmin();
-    });
-}
-
 function removeProduct(id) {
     let lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
     const nieuweLijst = lokaleProducten.filter(p => p.id !== id);
