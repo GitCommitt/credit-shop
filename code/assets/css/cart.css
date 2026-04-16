@@ -123,3 +123,8 @@ body {
 .checkout-button:active {
     transform: scale(0.98);
 }
+
+a > img
+{
+    width: 50px;
+}
