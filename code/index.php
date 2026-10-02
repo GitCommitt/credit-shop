@@ -1,25 +1,21 @@
-<?php
-$pageTitle = 'Webshop';
-?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?></title>
+    <title>Webshop</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="assets/js/script.js" type="module"></script>
     <script src="assets/js/shared.js" type="module"></script>
 </head>
-
 <body>
     <nav class="navbar-items">
         <h1 class="website-title">
-            Credit Shop
+            Bit Academy Credit Shop
         </h1>
-        <a class="admin-panel-link" href="admin/admin.php">Admin Panel</a>
+                <a class="admin-panel-link" href="admin/admin.php">Admin Panel</a>
+
         <div class="shoppingcart-icon has-items">
             <a href="shopping-cart.php">
                 <img src="./assets/img/showcart.svg" alt="edit" />
@@ -28,5 +24,4 @@ $pageTitle = 'Webshop';
     </nav>
     <div class="products" id="productsContainer"></div>
 </body>
-
 </html>

@@ -1,20 +1,17 @@
-<?php
-$pageTitle = 'Admin Panel - Product toevoegen';
-?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $pageTitle; ?></title>
+    <title>Admin Panel - Product toevoegen</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
     <script src="../assets/js/shared.js" type="module"></script>
     <script src="../assets/js/admin.js" type="module"></script>
 </head>
 <body>
-
     <h1>Admin Panel - Toevoegen</h1>
-    
-    <form id="productForm"> <div class="overzicht-producten">
+
+    <form id="productForm">
+        <div class="overzicht-producten">
             <div class="admin-product-header">
                 <span>Naam</span>
                 <span>Prijs</span>

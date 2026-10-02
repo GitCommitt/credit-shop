@@ -1,16 +1,12 @@
-<?php
-$pageTitle = 'Admin Panel';
-?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?></title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body class="admin-body">
-
     <div class="admin-panel-container">
         <header class="admin-header">
             <h1>Admin Panel - Overzicht</h1>
@@ -29,7 +25,7 @@ $pageTitle = 'Admin Panel';
                     </div>
                     <span class="arrow">→</span>
                 </a>
-                
+
                 <a href="admin-producten.php" class="menu-item">
                     <div class="menu-text">
                         <strong>Producten Beheren</strong>
@@ -41,9 +37,8 @@ $pageTitle = 'Admin Panel';
         </nav>
 
         <div class="admin-controls">
-             <a href="../index.php" class="back-link">Terug naar de shop</a>
+            <a href="../index.php" class="back-link">Terug naar de shop</a>
         </div>
     </div>
-
 </body>
 </html>

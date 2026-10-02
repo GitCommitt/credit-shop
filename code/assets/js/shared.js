@@ -1,23 +1,20 @@
-export const loadProductsFromStorage = (render, reloadFromJson = false) => {
-    const productenLokaal = JSON.parse(localStorage.getItem('mijnProducten'));
-    if (productenLokaal && !reloadFromJson) {
+export const loadProductsFromStorage = (render, productsUrl = 'product.json') => {
+    let productenLokaal = JSON.parse(localStorage.getItem('mijnProducten')) || null;
+    if (productenLokaal == null) {
+        fetch(productsUrl)
+            .then(res => res.json())
+            .then(jsonProducts => {
+                for (let i = 0; i < jsonProducts.length; i++) {
+                    addProduct(jsonProducts[i].id,
+                        jsonProducts[i].naam,
+                        jsonProducts[i].prijs,
+                        jsonProducts[i].afbeelding);
+                }
+                loadProductsFromStorage(render);
+            });
+    } else {
         render(productenLokaal);
-        return;
     }
-
-    fetch(new URL('../../product.json', import.meta.url), { cache: 'no-store' })
-        .then(res => {
-            if (!res.ok) throw new Error(`Producten laden mislukt: ${res.status}`);
-            return res.json();
-        })
-        .then(jsonProducts => {
-            localStorage.setItem('mijnProducten', JSON.stringify(jsonProducts));
-            render(jsonProducts);
-        })
-        .catch(error => {
-            console.error(error);
-            render(productenLokaal || []);
-        });
 };
 
 export function addProduct(id, naam, prijs, afbeelding) {

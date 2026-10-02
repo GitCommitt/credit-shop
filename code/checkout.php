@@ -1,32 +1,26 @@
-<?php
-$pageTitle = 'Afgerekend';
-?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?></title>
+    <title>Afgerekend</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/shared.js" type="module"></script>
     <script src="assets/js/script.js" type="module"></script>
 </head>
-
 <body>
     <nav class="navbar-items">
-        <h1 class="website-title">
-            Credit Shop
-        </h1>
+        <h1 class="website-title">Bit Acedemy Credit Shop</h1>
         <div class="shoppingcart-icon">
             <a href="shopping-cart.php">
-                <img src="./assets/img/showcart.svg" alt="edit" /></a>
+                <img src="./assets/img/showcart.svg" alt="edit" />
+            </a>
         </div>
     </nav>
+
     <div class="checkout-message">
         <h2>Bedankt voor uw aankoop!</h2>
         <a href="index.php">Ga terug naar de winkel</a>
     </div>
 </body>
-
 </html>

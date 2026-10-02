@@ -6,17 +6,6 @@ body {
     color: #333;
 }
 
-.navbar-items {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px 40px;
-    align-items: center;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
 .admin-panel-link {
     display: inline-flex;
     align-items: center;
@@ -48,29 +37,15 @@ body {
     outline-offset: 3px;
 }
 
-@media (max-width: 600px) {
-    .navbar-items {
-        gap: 10px;
-        padding: 12px 16px;
-    }
-
-    .website-title {
-        margin: 0;
-        font-size: 1.25rem;
-    }
-
-    .admin-panel-link {
-        gap: 6px;
-        padding: 8px 10px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    .shoppingcart-icon {
-        flex: 0 0 48px;
-        width: 48px;
-        height: 48px;
-    }
+.navbar-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 40px;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .shoppingcart-icon {
