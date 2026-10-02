@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar-items">
-        <h1 class="website-title">Bit Acedemy Credit Shop</h1>
+        <h1 class="website-title">Credit Shop</h1>
         <div class="clear-cart-icon">
             <a onclick="clearCart()">
                 <img src="./assets/img/deletebutton.svg" alt="delete" />

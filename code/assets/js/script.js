@@ -92,10 +92,20 @@ function renderCartPage() {
                             <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
                         </div>
                         <strong>€${sub.toFixed(2)}</strong>
+                        <button type="button" class="remove-item-button" onclick="removeFromCart(${p.id})">
+                            Verwijderen
+                        </button>
                     </div>`;
     }).join('');
     cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
     if (totalPriceElement) totalPriceElement.innerText = `€${total.toFixed(2)}`;
+}
+
+function removeFromCart(id) {
+    const cart = getCart();
+    delete cart[id];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateUI();
 }
 
 export function exportAndClearCart() {
@@ -156,3 +166,4 @@ document.addEventListener('DOMContentLoaded', () => {
 window.exportAndClearCart = exportAndClearCart;
 window.addProductWithDelay = addProductWithDelay;
 window.clearCart = clearCart;
+window.removeFromCart = removeFromCart;

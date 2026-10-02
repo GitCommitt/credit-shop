@@ -85,6 +85,19 @@ body {
     font-weight: 500;
 }
 
+.remove-item-button {
+    background: transparent;
+    color: #ff3b30;
+    border: 1px solid #ff3b30;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.remove-item-button:hover {
+    background: #fff2f1;
+}
+
 .winkelwagen-totaal {
     margin-top: 30px;
     padding-top: 20px;

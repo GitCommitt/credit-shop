@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar-items">
         <h1 class="website-title">
-            Bit Academy Credit Shop
+            Credit Shop
         </h1>
                 <a class="admin-panel-link" href="admin/admin.php">Admin Panel</a>
 
