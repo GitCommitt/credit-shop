@@ -31,12 +31,13 @@ De onderstaande technieken worden gebruikt in de website
 
 ## Website draaien
 1. Open de projectmap in je browser of editor.
-2. Start `index.html` (bijv. via Live Server) om de shop te bekijken.
-3. Open `admin.html` voor het beheerderspaneel.
+2. Start een PHP-server in de map `code` met `php -S localhost:8000`.
+3. Open `http://localhost:8000/index.php` om de shop te bekijken.
+4. Open `http://localhost:8000/admin/admin.php` voor het beheerderspaneel.
 
 ## Wat kan het?
-* **Producten Pagina:** Via `index.html` Kun je producten kiezen en toevoegen aan het winkelmandje.
-* **Winkelmandje**: Via `shopping-cart.html` kun je producten toegevoegde producten zien, producten verwijderen en bestellingen plaatsen.
-* **Admin Interface**: Via `admin.html` kun je kiezen uit twee opties:
+* **Producten Pagina:** Via `index.php` kun je producten kiezen en toevoegen aan het winkelmandje.
+* **Winkelmandje**: Via `shopping-cart.php` kun je toegevoegde producten zien, producten verwijderen en bestellingen plaatsen.
+* **Admin Interface**: Via `admin/admin.php` kun je kiezen uit twee opties:
     * **Producten beheren**: Toevoegen, wijzigen en verwijderen van het assortiment.
     * **Bestellingen beheren**: Bestellingen inzien en verwijderen uit de lijst.

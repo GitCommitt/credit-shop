@@ -1,12 +1,15 @@
+<?php
+$pageTitle = 'Admin Panel - Producten';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel - Bestellingen</title>
-    <link rel="stylesheet" href="assets/css/admin.css">
-    <script src="assets/js/admin.js" type="module"></script>
-    <script src="assets/js/shared.js" type="module"></script>
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/admin.js" type="module"></script>
+    <script src="../assets/js/shared.js" type="module"></script>
 </head>
 
 <body>
@@ -25,9 +28,9 @@
         </div>
     </div>
     <div class="admin-controls">
-        <a href="add-product.html" class="add-product-btn">Product toevoegen</a>
+        <a href="add-product.php" class="add-product-btn">Product toevoegen</a>
         <br>
-        <a href="admin.html" class="back-link">Terug naar de admin panel</a>
+        <a href="admin.php" class="back-link">Terug naar de admin panel</a>
     </div>
 
     <div id="editModal" class="modal">

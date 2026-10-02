@@ -1,10 +1,13 @@
+<?php
+$pageTitle = 'Webshop';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webshop</title>
+    <title><?php echo $pageTitle; ?></title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="assets/js/script.js" type="module"></script>
@@ -14,10 +17,11 @@
 <body>
     <nav class="navbar-items">
         <h1 class="website-title">
-            Bit Academy Credit Shop
+            Credit Shop
         </h1>
+        <a class="admin-panel-link" href="admin/admin.php">Admin Panel</a>
         <div class="shoppingcart-icon has-items">
-            <a href="shopping-cart.html">
+            <a href="shopping-cart.php">
                 <img src="./assets/img/showcart.svg" alt="edit" />
             </a>
         </div>

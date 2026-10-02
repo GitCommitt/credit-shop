@@ -1,11 +1,14 @@
+<?php
+$pageTitle = 'Admin Panel - Product toevoegen';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel - Product toevoegen</title>
-    <link rel="stylesheet" href="assets/css/admin.css">
-    <script src="assets/js/shared.js" type="module"></script>
-    <script src="assets/js/admin.js" type="module"></script>
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/shared.js" type="module"></script>
+    <script src="../assets/js/admin.js" type="module"></script>
 </head>
 <body>
 
@@ -28,7 +31,7 @@
         <div class="admin-controls">
             <button type="submit" class="add-product-btn">Maak het product aan</button>
             <br><br>
-            <a href="admin-producten.html" class="back-link">Terug naar de admin panel</a>
+            <a href="admin-producten.php" class="back-link">Terug naar de admin panel</a>
         </div>
     </form>
 </body>

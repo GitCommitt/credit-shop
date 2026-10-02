@@ -1,32 +1,92 @@
 [
     {
         "id": 1,
-        "naam": "Enzo Knol",
+        "naam": "Spiegel",
         "prijs": 9.99,
-        "afbeelding": "assets/img/enzoknol.png"
+        "afbeelding": "assets/img/spiegel.jpg"
     },
     {
         "id": 2,
-        "naam": "Milan Knol",
+        "naam": "Beker",
         "prijs": 19.99,
-        "afbeelding": "assets/img/me.png"
+        "afbeelding": "assets/img/beker.jpg"
     },
     {
         "id": 3,
-        "naam": "Carlos",
+        "naam": "Eetkamerstoel",
         "prijs": 29.99,
-        "afbeelding": "assets/img/carlos.png"
+        "afbeelding": "assets/img/stoel.jpg"
     },
     {
         "id": 4,
-        "naam": "Koen",
+        "naam": "Tafellamp",
         "prijs": 19.99,
-        "afbeelding": "assets/img/koen.png"
+        "afbeelding": "assets/img/tafellamp.jpg"
     },
     {
         "id": 5,
-        "naam": "Fardin",
+        "naam": "Glazen Vaas",
         "prijs": 19.99,
-        "afbeelding": "assets/img/koen.png"
+        "afbeelding": "assets/img/vaas.jpg"
+    },
+    {
+        "id": 6,
+        "naam": "Ronde Wandspiegel",
+        "prijs": 12.5,
+        "afbeelding": "assets/img/rond-spiegel.jpg"
+    },
+    {
+        "id": 7,
+        "naam": "Keramische Mok",
+        "prijs": 4.99,
+        "afbeelding": "assets/img/keramisch.jpg"
+    },
+    {
+        "id": 8,
+        "naam": "Loungefauteuil",
+        "prijs": 39.95,
+        "afbeelding": "assets/img/lounge.jpg"
+    },
+    {
+        "id": 9,
+        "naam": "Plantpot",
+        "prijs": 14.95,
+        "afbeelding": "assets/img/plantpot.jpg"
+    },
+    {
+        "id": 10,
+        "naam": "Wandklok",
+        "prijs": 14.95,
+        "afbeelding": "assets/img/wandklok.jpg"
+    },
+    {
+        "id": 11,
+        "naam": "Bestek",
+        "prijs": 14.95,
+        "afbeelding": "assets/img/bestek.jpg"
+    },
+    {
+        "id": 12,
+        "naam": "Salontafel",
+        "prijs": 34.95,
+        "afbeelding": "assets/img/salon.jpg"
+    },
+    {
+        "id": 13,
+        "naam": "Kandelaar",
+        "prijs": 6.5,
+        "afbeelding": "assets/img/kandelaar.jpg"
+    },
+    {
+        "id": 14,
+        "naam": "Opbergmand",
+        "prijs": 44.95,
+        "afbeelding": "assets/img/opbergmand.jpg"
+    },
+    {
+        "id": 15,
+        "naam": "Bijzettafel",
+        "prijs": 27.5,
+        "afbeelding": "assets/img/bijzettafel.jpg"
     }
 ]

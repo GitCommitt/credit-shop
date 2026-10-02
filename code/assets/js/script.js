@@ -17,7 +17,7 @@ const loadAllProducts = () => {
 
     loadProductsFromStorage((lokaleProducten) => {
         renderProducts(lokaleProducten);
-    });
+    }, true);
 };
 
 function renderProducts(productenLijst) {
@@ -92,6 +92,12 @@ function renderCartPage() {
                             <p>${cart[p.id]} x €${prijs.toFixed(2)}</p>
                         </div>
                         <strong>€${sub.toFixed(2)}</strong>
+                        <button class="remove-cart-item-button" type="button"
+                            aria-label="Verwijder ${p.name || p.naam} uit winkelwagen"
+                            title="Verwijder product"
+                            onclick="removeCartItem('${p.id}')">
+                            <img src="./assets/img/deletebutton.svg" alt="">
+                        </button>
                     </div>`;
     }).join('');
     cartDisplay.innerHTML = html || "<p>Je winkelwagen is leeg.</p>";
@@ -102,7 +108,7 @@ export function exportAndClearCart() {
     let cart = getCart();
     if (Object.keys(cart).length === 0) {
         alert("Mandje is leeg");
-        return;
+        return false;
     }
 
     const lokaleProducten = JSON.parse(localStorage.getItem('mijnProducten')) || [];
@@ -137,10 +143,11 @@ export function exportAndClearCart() {
         localStorage.setItem('all_orders', JSON.stringify(bestellingen));
         localStorage.removeItem('cart');
         alert("Bestelling succesvol geplaatst!");
-        window.location.reload();
+        return true;
     } catch (error) {
         console.error("Fout bij afrekenen:", error);
         alert("Er ging iets mis bij het verwerken van de producten.");
+        return false;
     }
 }
 
@@ -149,9 +156,21 @@ function clearCart() {
     window.location.reload();
 }
 
+function removeCartItem(id) {
+    const cart = getCart();
+    delete cart[id];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateUI();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     updateUI();
     loadAllProducts();
+    if (cartDisplay) {
+        loadProductsFromStorage(() => updateUI(), true);
+    }
 });
+window.clearCart = clearCart;
+window.removeCartItem = removeCartItem;
 window.exportAndClearCart = exportAndClearCart;
 window.addProductWithDelay = addProductWithDelay;

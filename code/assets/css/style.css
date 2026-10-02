@@ -17,6 +17,62 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+.admin-panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid #cbd5d0;
+    border-radius: 8px;
+    background: #fff;
+    color: #263b34;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-panel-link:hover {
+    border-color: grey;
+    background: black;
+    color: #fff;
+}
+
+.admin-panel-link:hover {
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.admin-panel-link:focus-visible {
+    outline: 3px solid #696969;
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .navbar-items {
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .website-title {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+    .admin-panel-link {
+        gap: 6px;
+        padding: 8px 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .shoppingcart-icon {
+        flex: 0 0 48px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
 .shoppingcart-icon {
     width: 64px;
     height: 64px;
