@@ -1,0 +1,63 @@
+<?php
+$pageTitle = 'Admin Panel - Producten';
+?>
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/admin.js" type="module"></script>
+    <script src="../assets/js/shared.js" type="module"></script>
+</head>
+
+<body>
+
+    <h1>Admin Panel - Producten</h1>
+    <div class="overzicht-producten">
+
+        <div class="admin-product-header">
+            <span>ID</span>
+            <span>Naam</span>
+            <span>Afbeelding URL</span>
+            <span>Prijs</span>
+        </div>
+
+        <div id="admin-producten">
+        </div>
+    </div>
+    <div class="admin-controls">
+        <a href="add-product.php" class="add-product-btn">Product toevoegen</a>
+        <br>
+        <a href="admin.php" class="back-link">Terug naar de admin panel</a>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Product Bewerken</h2>
+            <form id="editProductForm">
+                <div class="form-group">
+                    <label for="edit-naam">Naam:</label>
+                    <input type="text" id="edit-naam" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-prijs">Prijs:</label>
+                    <input type="number" id="edit-prijs" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-afbeelding">Afbeelding URL:</label>
+                    <input type="text" id="edit-afbeelding" placeholder="assets/img/" required>
+                </div>
+                <div class="form-controls">
+                    <button type="submit" class="add-product-btn">Opslaan</button>
+                    <button type="button" class="cancel-btn" onclick="closeeditModal()">Annuleren</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

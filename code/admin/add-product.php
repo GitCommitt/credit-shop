@@ -1,0 +1,38 @@
+<?php
+$pageTitle = 'Admin Panel - Product toevoegen';
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/shared.js" type="module"></script>
+    <script src="../assets/js/admin.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Admin Panel - Toevoegen</h1>
+    
+    <form id="productForm"> <div class="overzicht-producten">
+            <div class="admin-product-header">
+                <span>Naam</span>
+                <span>Prijs</span>
+                <span>Afbeelding URL</span>
+            </div>
+
+            <div class="admin-product-card product-row">
+                <input type="text" id="naam" placeholder="Naam" required>
+                <input type="number" id="prijs" placeholder="Prijs" step="0.01" required>
+                <input type="text" id="afbeelding" value="assets/img/" required>
+            </div>
+        </div>
+
+        <div class="admin-controls">
+            <button type="submit" class="add-product-btn">Maak het product aan</button>
+            <br><br>
+            <a href="admin-producten.php" class="back-link">Terug naar de admin panel</a>
+        </div>
+    </form>
+</body>
+</html>

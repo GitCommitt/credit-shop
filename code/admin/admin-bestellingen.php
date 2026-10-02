@@ -1,0 +1,34 @@
+<?php
+$pageTitle = 'Admin - Bestellingen';
+?>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $pageTitle; ?></title>
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="../assets/js/admin.js" type="module"></script>
+</head>
+<body>
+
+    <h1>Admin Panel - Bestellingen</h1>
+
+    <div class="overzicht-bestellingen">
+        <div class="admin-product-header" >
+            <span>ID</span>
+            <span>Datum</span>
+            <span>Totaal</span>
+        </div>
+        
+        <div id="admin-orders">
+            </div>
+    </div>
+
+    <div class="admin-controls">
+        <button onclick="resetAdmin()" class="reset-btn">Alle bestellingen wissen</button>
+        <br>
+        <a href="admin.php" class="back-link">Terug naar de admin panel</a>
+    </div>
+
+</body>
+</html>

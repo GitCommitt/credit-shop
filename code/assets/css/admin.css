@@ -1,0 +1,288 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.admin-subtitle {
+    text-align: center; 
+    color: #7f8c8d; 
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.admin-menu-list {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #e1e4e8;
+    border-top: none;
+}
+
+.admin-product-header, 
+.admin-product-card {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 25px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-product-header {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-size: 0.85rem;
+    border-bottom: none;
+    justify-content: center;
+}
+
+.overzicht-producten .admin-product-header,
+.product-row {
+    grid-template-columns: 60px 150px 1fr 100px 20px 20px;
+    justify-content: stretch;
+}
+
+.overzicht-bestellingen .admin-product-header,
+.order-row {
+    grid-template-columns: 80px 1fr 120px;
+    justify-content: stretch;
+}
+
+.menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 22px 30px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.25s ease-in-out;
+}
+.menu-text strong {
+    font-size: 1.15rem;
+    display: block;
+    color: #2c3e50;
+}
+
+.menu-text small {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.admin-product-card p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-controls {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.back-link {
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.back-link:hover {
+    color: #2c3e50;
+    background: #e1e4e8;
+    border-radius: 6px;
+}
+
+.add-product-btn, .reset-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.add-product-btn { background: #27ae60; color: white; }
+.add-product-btn a { color: white; text-decoration: none; display: block; }
+.reset-btn { background: #e74c3c; color: white; }
+
+.add-product-btn:hover { background: #219451; }
+.reset-btn:hover { background: #bd4032; }
+
+.remove-product-button {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.remove-product-button:hover svg {
+    fill: #e74c3c;
+}
+.edit-product-button {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: inline-block;
+    width: 24px;
+    margin-left: 10px;
+}
+
+.edit-product-button:hover svg {
+    fill: grey;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.close {
+    color: #7f8c8d;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+.form-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.form-controls button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.form-controls .add-product-btn {
+    max-width: none;
+    margin-bottom: 0;
+    background: #27ae60;
+    color: white;
+    width: 100%;
+}
+
+.form-controls .add-product-btn:hover {
+    background: #219451;
+}
+
+.cancel-btn {
+    background: #95a5a6;
+    color: white;
+    flex: 1;
+}
+
+.cancel-btn:hover {
+    background: #7f8c8d;
+}
